@@ -1,0 +1,40 @@
+.square {
+  width: 70px;
+  height: 70px;
+  background-color: #ad703b;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+.squareSelected {
+  width: 70px;
+  height: 70px;
+  background-color: #ffb158;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+
+@media (min-width: 1536px) {
+  .square {
+    width: 100px;
+    height: 100px;
+  
+  }
+  
+  .squareSelected {
+    width: 100px;
+    height: 100px;
+  
+  }
+  
+}

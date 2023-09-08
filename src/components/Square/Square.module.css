@@ -1,0 +1,27 @@
+.square {
+  width: 70px;
+  height: 70px;
+  background-color: rgb(0 0 0 / 32%);
+  backdrop-filter: blur(200px);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: white;
+  font-size: xx-large;
+  font-weight: bolder;
+}
+.circle {
+  stroke-width: 10px;
+  stroke-linecap: round;
+  fill: transparent;
+}
+
+
+@media (min-width:  1536px) {
+  .square {
+    width: 100px;
+    height: 100px;
+  }
+}
