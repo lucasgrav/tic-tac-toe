@@ -3,12 +3,14 @@ import useTicTacToe from "./useTicTacToe";
 import Square from "../Square/Square";
 import SquareTourns from "../Square/SquareTourns";
 import ModalWinner from "../Modal/ModalWinner";
-import { AiOutlineReload } from "react-icons/ai";
+import { AiOutlineReload, AiOutlineRobot } from "react-icons/ai";
+
 import { GiTicTacToe } from "react-icons/gi";
 import { motion } from "framer-motion";
+import Switch from "../Switch/Switch";
 
 const TicTacToe = () => {
-  const { TURNS, updateBoard, winner, board, resetGame, turn } = useTicTacToe();
+  const { TURNS, updateBoard, winner, board, resetGame, turn, computer, setComputer } = useTicTacToe();
 
   return (
     <motion.div
@@ -26,8 +28,12 @@ const TicTacToe = () => {
             <GiTicTacToe />
           </h2>
         </div>
+
         <div className={style.containerGame}>
           {/* SE RENDERIZAN LOS SQUARES (CUBOS O CASILLAS)*/}
+       
+            <Switch computer={computer} setComputer={setComputer} />
+          
           <section className={style.game}>
             {board.map((square, index) => {
               return (
