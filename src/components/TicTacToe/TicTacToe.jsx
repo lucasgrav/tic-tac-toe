@@ -32,7 +32,7 @@ const TicTacToe = () => {
         <div className={style.containerGame}>
           {/* SE RENDERIZAN LOS SQUARES (CUBOS O CASILLAS)*/}
        
-            <Switch computer={computer} setComputer={setComputer} />
+            <Switch computer={computer} setComputer={setComputer} resetGame={resetGame}/>
           
           <section className={style.game}>
             {board.map((square, index) => {

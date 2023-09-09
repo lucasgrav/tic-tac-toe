@@ -99,17 +99,19 @@ const useTicTacToe = () => {
       }
       return acc;
     }, []);
+
     let indexRandom;
     let posibilities = [];
 
     do {
       indexRandom = Math.floor(Math.random() * 9);
       posibilities = emptySquares.find((index) => index === indexRandom);
-    } while (posibilities === undefined);
+    } while (posibilities === undefined );
 
     const newBoard = [...board];
     newBoard[indexRandom] = newTurn;
     setBoard(newBoard);
+
     const newTurnComputer = newTurn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurnComputer);
 
