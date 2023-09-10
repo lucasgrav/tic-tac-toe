@@ -2,8 +2,6 @@ import { useState } from "react";
 import confetti from "canvas-confetti";
 
 const useTicTacToe = () => {
-  const [computer, setComputer] = useState(false);
-
   // TURNO CORRESPONDIENTE
   const TURNS = {
     X: "X",
@@ -53,9 +51,6 @@ const useTicTacToe = () => {
 
   //FUNCION PARA IR ACTUALIZANDO EL BOARD
   const updateBoard = async (index) => {
-    //! CHEQUEO QUE ESTE ENCENDIDO EL JUGAR CONTRA EL "BOT" Y NO VA A PODER CLICKEAR EL TURNO DEL BOT
-    if (computer && turn === TURNS.O) return;
-
     //! SI EL SQUARE CONTIENE ALGO O SI HAY UN GANADOR NO PERMITE VOLVER A REESCRIBIR
     if (board[index] || winner) return;
 
@@ -78,54 +73,10 @@ const useTicTacToe = () => {
       setWinner(newWinner);
     } else if (checkEndGame(newBoard)) {
       setWinner(false);
-    } else {
-      if (computer) {
-        await new Promise((resolve) =>
-          setTimeout(() => {
-            tournComputer(newTurn, newBoard);
-            resolve();
-          }, 500)
-        );
-      }
-    }
+    } 
   };
 
 
-// FUNCION CON LA LOGICA DEL "BOT"
-  const tournComputer = (newTurn, board) => {
-    const emptySquares = board.reduce((acc, value, index) => {
-      if (!value) {
-        acc.push(index);
-      }
-      return acc;
-    }, []);
-
-    let indexRandom;
-    let posibilities = [];
-
-    do {
-      indexRandom = Math.floor(Math.random() * 9);
-      posibilities = emptySquares.find((index) => index === indexRandom);
-    } while (posibilities === undefined );
-
-    const newBoard = [...board];
-    newBoard[indexRandom] = newTurn;
-    setBoard(newBoard);
-
-    const newTurnComputer = newTurn === TURNS.X ? TURNS.O : TURNS.X;
-    setTurn(newTurnComputer);
-
-    indexRandom = null;
-    posibilities = [];
-
-    const newWinner = checkWinner(newBoard);
-    if (newWinner) {
-      confetti();
-      setWinner(newWinner);
-    } else if (checkEndGame(newBoard)) {
-      setWinner(false);
-    }
-  };
 
   // FUNCION PARA RESETEAR EL JUEGO
   const resetGame = () => {
@@ -141,8 +92,6 @@ const useTicTacToe = () => {
     board,
     resetGame,
     turn,
-    setComputer,
-    computer,
   };
 };
 export default useTicTacToe;
